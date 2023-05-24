@@ -1,11 +1,6 @@
 import SectionTitle from "../../shared/Title/SectionTitle";
 import featured from "../../../assets/home/featured.jpg";
 
-// style={{
-//     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),url('${bg}')`,
-//     backgroundPosition: "center",
-//     backgroundSize: "cover",
-//   }}
 const Featured = () => {
   return (
     <section
