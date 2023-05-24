@@ -1,0 +1,9 @@
+.carousel-container {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel .thumbs-wrapper {
+   width: 50%;
+    margin: 0 auto;
+}
