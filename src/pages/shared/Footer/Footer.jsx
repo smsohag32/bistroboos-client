@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <div className="relative">
-      <footer className=" p-10 flex justify-between items-center bg-transparent text-neutral-content">
+    <div className="relative bg-slate-800 border-t-2">
+      <footer className=" p-10  flex justify-between items-center bg-transparent text-neutral-content">
         <div>
           <svg
             width="50"
@@ -61,20 +61,10 @@ const Footer = () => {
       </footer>
       <footer className="footer footer-center p-4 bg-transparent text-base-content">
         <div>
+          <hr className="border-1 w-full" />
           <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
         </div>
       </footer>
-      <svg
-        className="absolute -z-10 top-0 opacity-20 left-0 right-0 bottom-0"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1440 320"
-      >
-        <path
-          fill="#0099ff"
-          opacity="1"
-          d="M0,0L48,16C96,32,192,64,288,64C384,64,480,32,576,42.7C672,53,768,107,864,133.3C960,160,1056,160,1152,160C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-        ></path>
-      </svg>
     </div>
   );
 };

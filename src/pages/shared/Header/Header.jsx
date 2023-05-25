@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { AiOutlineShoppingCart } from "react-icons/ai";
 const Header = () => {
   const navLink = (
     <>
@@ -10,7 +10,13 @@ const Header = () => {
         <Link to="/menu">Menu</Link>
       </li>
       <li>
-        <Link to="/order/salad">Food Order</Link>
+        <Link to="/order/salad">
+          Food Order{" "}
+          <AiOutlineShoppingCart className="text-orange-400 font-bold"></AiOutlineShoppingCart>{" "}
+        </Link>
+      </li>
+      <li>
+        <Link to="/login">Login</Link>
       </li>
     </>
   );
