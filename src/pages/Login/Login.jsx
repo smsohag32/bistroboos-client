@@ -1,4 +1,25 @@
+import { useEffect, useRef, useState } from "react";
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  LoadCanvasTemplateNoReload,
+  validateCaptcha,
+} from "react-simple-captcha";
+
 const Login = () => {
+  const captchaInput = useRef();
+  const [disable, setDisable] = useState(true);
+  const handleValideCaptcha = () => {
+    const user_captcha_value = captchaInput.current.value;
+    if (validateCaptcha(user_captcha_value)) {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  };
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col">
@@ -12,8 +33,9 @@ const Login = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="text"
+                type="email"
                 placeholder="email"
+                name="email"
                 className="input input-bordered"
               />
             </div>
@@ -22,18 +44,36 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 placeholder="password"
+                name="password"
+                className="input input-bordered"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <LoadCanvasTemplate />
+              </label>
+              <input
+                type="text"
+                name="captcha"
+                ref={captchaInput}
+                placeholder="Enter captcha above"
                 className="input input-bordered"
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
+                <button onClick={handleValideCaptcha} className="btn btn-xs">
+                  Validate
+                </button>
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button
+                disabled={disable}
+                className="btn btn-outline disabled:text-black disabled:border-none btn-primary"
+              >
+                Login
+              </button>
             </div>
           </div>
         </div>
