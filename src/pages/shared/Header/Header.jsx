@@ -10,12 +10,12 @@ const Header = () => {
         <Link to="/menu">Menu</Link>
       </li>
       <li>
-        <Link to="/order">Food Order</Link>
+        <Link to="/order/salad">Food Order</Link>
       </li>
     </>
   );
   return (
-    <div className="bg-black bg-opacity-50 backdrop-blur-2xl fixed  left-0 top-0 right-0 z-50">
+    <div className="bg-black bg-opacity-50 backdrop-blur-2xl fixed  left-0 top-0 right-0 text-white z-50">
       <div className="navbar main-container ">
         <div className="navbar-start ">
           <div className="dropdown">

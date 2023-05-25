@@ -30,21 +30,21 @@ const Menu = () => {
         heading={"Todays offered"}
         subHeading={"don't miss"}
       ></SectionTitle>
-      <CategoryMenu items={offered}></CategoryMenu>
+      <CategoryMenu items={offered} title="offered"></CategoryMenu>
       <CategoryMenu
         items={dessert}
-        title={"Dessert"}
+        title={"desserts"}
         img={dessertImage}
       ></CategoryMenu>
-      <CategoryMenu items={soup} title={"Soups"} img={soupImage}></CategoryMenu>
+      <CategoryMenu items={soup} title={"soup"} img={soupImage}></CategoryMenu>
       <CategoryMenu
         items={salad}
-        title={"Salad"}
+        title={"salad"}
         img={saladImage}
       ></CategoryMenu>
       <CategoryMenu
         items={pizza}
-        title={"Pizza"}
+        title={"pizza"}
         img={pizzaImage}
       ></CategoryMenu>
     </div>
