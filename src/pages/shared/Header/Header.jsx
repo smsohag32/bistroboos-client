@@ -12,7 +12,7 @@ const Header = () => {
       <li>
         <Link to="/order/salad">
           Food Order{" "}
-          <AiOutlineShoppingCart className="text-orange-400 font-bold"></AiOutlineShoppingCart>{" "}
+          <AiOutlineShoppingCart className="text-orange-400 font-bold "></AiOutlineShoppingCart>{" "}
         </Link>
       </li>
       <li>
