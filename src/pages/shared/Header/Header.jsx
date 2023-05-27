@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthProvider";
 const Header = () => {
+  const { user } = useContext(AuthContext);
+
   const navLink = (
     <>
       <li>
@@ -54,7 +58,14 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{navLink}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+          {user && (
+            <img
+              className="rounded-full"
+              src={user?.photoURL}
+              width={50}
+              height={50}
+            ></img>
+          )}
         </div>
       </div>
     </div>
