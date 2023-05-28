@@ -2,9 +2,13 @@ import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
+import useCart from "../../../hooks/useCart";
 const Header = () => {
-  const { user } = useContext(AuthContext);
-
+  const { carts } = useCart();
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogout = () => {
+    logOut();
+  };
   const navLink = (
     <>
       <li>
@@ -16,11 +20,28 @@ const Header = () => {
       <li>
         <Link to="/order/salad">
           Food Order{" "}
-          <AiOutlineShoppingCart className="text-orange-400 font-bold "></AiOutlineShoppingCart>{" "}
+          <AiOutlineShoppingCart className="text-orange-400 font-bold "></AiOutlineShoppingCart>
         </Link>
       </li>
       <li>
-        <Link to="/login">Login</Link>
+        {user ? (
+          <div>
+            <Link to="/dashboard/cart">
+              {" "}
+              <button className="btn gap-2">
+                Cart
+                <div className="badge badge-secondary">
+                  +{carts?.length || 0}
+                </div>
+              </button>
+            </Link>
+            <button onClick={handleLogout} className="btn btn-sm btn-primary">
+              Log out
+            </button>
+          </div>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </li>
     </>
   );
