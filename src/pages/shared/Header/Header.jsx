@@ -3,6 +3,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
 import useCart from "../../../hooks/useCart";
+
 const Header = () => {
   const { carts } = useCart();
   const { user, logOut } = useContext(AuthContext);
@@ -19,15 +20,14 @@ const Header = () => {
       </li>
       <li>
         <Link to="/order/salad">
-          Food Order{" "}
+          Food Order
           <AiOutlineShoppingCart className="text-orange-400 font-bold "></AiOutlineShoppingCart>
         </Link>
       </li>
       <li>
         {user ? (
           <div>
-            <Link to="/dashboard/cart">
-              {" "}
+            <Link to="/dashboard/carts">
               <button className="btn gap-2">
                 Cart
                 <div className="badge badge-secondary">

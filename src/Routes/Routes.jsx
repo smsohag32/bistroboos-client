@@ -5,6 +5,9 @@ import Menu from "../pages/Menu/Menu/Menu";
 import Order from "../pages/Order/Order/Order";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import MyCarts from "../pages/Dashboard/MyCarts/MyCarts";
 
 export const routes = createBrowserRouter([
   {
@@ -30,6 +33,20 @@ export const routes = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "userhome",
+        element: <UserHome />,
+      },
+      {
+        path: "carts",
+        element: <MyCarts />,
       },
     ],
   },
