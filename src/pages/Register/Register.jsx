@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 
 import { AuthContext } from "../../context/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import SocialLogin from "../shared/SocialLogin/SocialLogin";
 
 const Register = () => {
   const location = useLocation();
@@ -24,7 +25,7 @@ const Register = () => {
     const password = data.password;
     let formData = new FormData();
     formData.append("image", imageFile);
-    console.log(formData);
+
     const url = `https://api.imgbb.com/1/upload?key=${
       import.meta.env.VITE_IMGBB_KEY
     }`;
@@ -40,7 +41,21 @@ const Register = () => {
             toast.success("Register successfully");
             updateUserInfo(name, imageUrl)
               .then(() => {
-                navigate(from, { replace: true });
+                const saveUser = { name: name, email: email };
+                fetch(`http://localhost:5000/users`, {
+                  method: "POST",
+                  headers: {
+                    "content-type": "application/json",
+                  },
+                  body: JSON.stringify(saveUser),
+                })
+                  .then((res) => res.json())
+                  .then((data) => {
+                    if (data.insertedId) {
+                      toast.success("sing up successfully");
+                      navigate(from, { replace: true });
+                    }
+                  });
               })
               .catch((err) => {
                 console.log(err);
@@ -154,6 +169,7 @@ const Register = () => {
           <p>
             Al ready have an account <Link to="/login">Login Please</Link>
           </p>
+          <SocialLogin />
         </div>
       </div>
     </div>

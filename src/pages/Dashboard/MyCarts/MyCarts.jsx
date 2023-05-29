@@ -9,15 +9,28 @@ const MyCarts = () => {
 
   const handleDelete = (item) => {
     console.log(item);
-    fetch(`http://localhost:5000/carts/${item._id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount) {
-          refetch();
-        }
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to delete it",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/carts/${item._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              refetch();
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
   };
   return (
     <div className="h-auto ">

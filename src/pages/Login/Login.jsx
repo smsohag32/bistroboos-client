@@ -8,6 +8,7 @@ import {
 } from "react-simple-captcha";
 import { AuthContext } from "../../context/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import SocialLogin from "../shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const location = useLocation();
@@ -122,6 +123,7 @@ const Login = () => {
               </button>
             </div>
           </form>
+          <SocialLogin />
           <p className="text-black">
             Do not have any account <Link to="/register">Please Sing up</Link>
           </p>
