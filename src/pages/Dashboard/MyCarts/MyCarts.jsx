@@ -3,11 +3,24 @@ import useCart from "../../../hooks/useCart";
 import SectionTitle from "../../shared/Title/SectionTitle";
 
 const MyCarts = () => {
-  const { carts } = useCart();
+  const { carts, refetch } = useCart();
   // total price get in array of object using to reduce
   const total = carts.reduce((sum, item) => item.price + sum, 0);
+
+  const handleDelete = (item) => {
+    console.log(item);
+    fetch(`http://localhost:5000/carts/${item._id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          refetch();
+        }
+      });
+  };
   return (
-    <div className="">
+    <div className="h-auto ">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Bistro || Home</title>
@@ -36,36 +49,42 @@ const MyCarts = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* row 1 */}
-                <tr>
-                  <td>
-                    <div className="flex items-center space-x-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                          <img
-                            src="/tailwind-css-component-profile-2@56w.png"
-                            alt="Avatar Tailwind CSS Component"
-                          />
+                {carts.map((item, index) => (
+                  <tr key={item._id}>
+                    <td>
+                      <span>{index + 1}</span>
+                    </td>
+                    <td>
+                      <div className="flex items-center space-x-3">
+                        <div className="avatar">
+                          <div className="mask mask-squircle w-12 h-12">
+                            <img
+                              src={item.image}
+                              alt="Avatar Tailwind CSS Component"
+                            />
+                          </div>
                         </div>
                       </div>
+                    </td>
+                    <td>
+                      <div className="font-bold">{item.name}</div>
+                    </td>
+                    <td>
+                      <div className="text-sm opacity-50">{item.price}</div>
+                    </td>
+
+                    <td>
                       <div>
-                        <div className="font-bold">Hart Hagerty</div>
-                        <div className="text-sm opacity-50">United States</div>
+                        <button
+                          className="btn btn-xs"
+                          onClick={() => handleDelete(item)}
+                        >
+                          Delete
+                        </button>
                       </div>
-                    </div>
-                  </td>
-                  <td>
-                    Zemlak, Daniel and Leannon
-                    <br />
-                    <span className="badge badge-ghost badge-sm">
-                      Desktop Support Technician
-                    </span>
-                  </td>
-                  <td>Purple</td>
-                  <th>
-                    <button className="btn btn-ghost btn-xs">details</button>
-                  </th>
-                </tr>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

@@ -43,8 +43,8 @@ const DashboardLayout = () => {
     <div>
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
-          <div className="bg-white w-full min-h-screen">
+        <div className="drawer-content">
+          <div className="bg-white w-full h-auto">
             <div className=" absolute right-5">
               <label htmlFor="my-drawer-2" className=" drawer-button lg:hidden">
                 <FaAddressBook
